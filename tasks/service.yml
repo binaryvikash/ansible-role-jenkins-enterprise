@@ -1,0 +1,9 @@
+---
+# Jenkins service tasks
+
+- name: Ensure Jenkins service is enabled and running
+  ansible.builtin.systemd:
+    name: "{{ jenkins_service_name }}"
+    enabled: true
+    state: started
+    

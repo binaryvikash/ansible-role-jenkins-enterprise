@@ -1,0 +1,14 @@
+---
+- name: Install prerequisite packages
+  ansible.builtin.apt:
+    name:
+      - curl
+      - gnupg
+      - ca-certificates
+    state: present
+    update_cache: true
+
+- name: Install Java
+  ansible.builtin.apt:
+    name: "{{ jenkins_java_package }}"
+    state: present

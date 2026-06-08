@@ -1,0 +1,30 @@
+---
+# Jenkins installation tasks
+
+- name: Create APT keyrings directory
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: "0755"
+
+- name: Download Jenkins repository key
+  ansible.builtin.get_url:
+    url: "{{ jenkins_repo_key_url }}"
+    dest: "{{ jenkins_repo_key_path }}"
+    mode: "0644"
+
+- name: Add Jenkins repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by={{ jenkins_repo_key_path }}] {{ jenkins_repo_url }} binary/"
+    filename: "{{ jenkins_repo_name }}"
+    state: present
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+
+- name: Install Jenkins
+  ansible.builtin.apt:
+    name: "{{ jenkins_package_name }}"
+    state: present
+
