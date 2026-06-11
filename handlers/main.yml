@@ -1,2 +1,6 @@
 ---
-# handlers file for ansible-role-jenkins-enterprise
+- name: Restart Jenkins
+  ansible.builtin.systemd:
+    daemon_reload: true
+    name: "{{ jenkins_service_name }}"
+    state: restarted

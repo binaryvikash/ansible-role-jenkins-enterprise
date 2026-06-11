@@ -10,3 +10,7 @@ jenkins_repo_name: jenkins
 jenkins_package_name: jenkins
 jenkins_service_name: jenkins
 jenkins_http_port: 8080
+jenkins_plugins:
+  - git
+  - workflow-aggregator
+  - docker-workflow
