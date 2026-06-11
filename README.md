@@ -1,38 +1,62 @@
-Role Name
-=========
+# ansible-role-jenkins-enterprise
 
-A brief description of the role goes here.
+An Ansible role that installs and configures Jenkins using the official Jenkins repository.
 
-Requirements
-------------
+## Features
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+* Installs OpenJDK 21
+* Adds the official Jenkins APT repository
+* Installs Jenkins
+* Configures Jenkins HTTP port
+* Enables and starts the Jenkins service
+* Uses systemd overrides for configuration
+* Idempotent execution
 
-Role Variables
---------------
+## Requirements
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* Ubuntu 22.04 (Jammy) or later
+* Ansible 2.17+
 
-Dependencies
-------------
+## Role Variables
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Default values are defined in `defaults/main.yml`.
 
-Example Playbook
-----------------
+| Variable             | Default        |
+| -------------------- | -------------- |
+| jenkins_java_package | openjdk-21-jdk |
+| jenkins_http_port    | 8080           |
+| jenkins_package_name | jenkins        |
+| jenkins_service_name | jenkins        |
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+## Example Playbook
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+```yaml
+- hosts: jenkins
+  become: true
 
-License
--------
+  roles:
+    - role: binaryvikash.ansible_role_jenkins_enterprise
+      vars:
+        jenkins_http_port: 9090
+```
 
-BSD
+## Testing
 
-Author Information
-------------------
+```bash
+ansible-playbook -i tests/inventory tests/test.yml --become -K
+```
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+## Roadmap
+
+* Plugin management
+* Security configuration
+* Admin user creation
+* Job provisioning
+
+## License
+
+MIT
+
+## Author
+
+Vikash Kumar Baitha
