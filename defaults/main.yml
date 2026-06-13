@@ -1,8 +1,6 @@
 ---
 # defaults file for ansible-role-jenkins-enterprise
-
 jenkins_java_package: openjdk-21-jdk
-
 jenkins_repo_key_url: https://pkg.jenkins.io/debian-stable/jenkins.io-2026.key
 jenkins_repo_key_path: /etc/apt/keyrings/jenkins.asc
 jenkins_repo_url: https://pkg.jenkins.io/debian-stable
@@ -10,7 +8,3 @@ jenkins_repo_name: jenkins
 jenkins_package_name: jenkins
 jenkins_service_name: jenkins
 jenkins_http_port: 8080
-jenkins_plugins:
-  - git
-  - workflow-aggregator
-  - docker-workflow

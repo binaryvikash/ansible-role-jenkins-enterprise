@@ -4,7 +4,6 @@
     path: /etc/systemd/system/jenkins.service.d
     state: directory
     mode: "0755"
-
 - name: Configure Jenkins port
   ansible.builtin.template:
     src: override.conf.j2

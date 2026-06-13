@@ -4,5 +4,4 @@
   become: true
 
   roles:
-    - ansible-role-jenkins-enterprise
-    
+    - role: ansible-role-jenkins-enterprise

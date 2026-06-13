@@ -2,15 +2,9 @@
 ---
 - name: Run prerequisites
   ansible.builtin.include_tasks: prerequisites.yml
-
 - name: Install Jenkins
   ansible.builtin.include_tasks: install.yml
-
 - name: Configure Jenkins
   ansible.builtin.include_tasks: configure.yml
-
-- name: Install Jenkins plugins
-  ansible.builtin.include_tasks: plugins.yml
-
 - name: Manage Jenkins service
   ansible.builtin.include_tasks: service.yml

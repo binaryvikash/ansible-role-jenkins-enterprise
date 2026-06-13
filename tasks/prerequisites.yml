@@ -7,7 +7,6 @@
       - ca-certificates
     state: present
     update_cache: true
-
 - name: Install Java
   ansible.builtin.apt:
     name: "{{ jenkins_java_package }}"

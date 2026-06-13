@@ -14,3 +14,6 @@ __pycache__/
 
 # Ansible retry files
 *.retry
+
+# Ansible local cache
+.ansible/
